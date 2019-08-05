@@ -1,0 +1,11 @@
+server:
+  port: 2000
+spring:
+  application:
+    # 这里的name对应git中的文件名
+    name: user
+  cloud:
+    config:
+      profile: dev
+      uri: http://localhost:9000
+      label: master

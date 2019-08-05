@@ -1,0 +1,11 @@
+eureka:
+  instance:
+    # 配置主机名
+    hostname: peer1
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://peer2:1002/eureka,http://peer3:1003/eureka
+server:
+  port: 1001
