@@ -1,5 +1,6 @@
 package top.ryan1h.springcloud.template.article.web.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import top.ryan1h.springcloud.template.article.service.UserService;
  */
 @RestController
 @RequestMapping("/articles")
+@Slf4j
 public class ArticleController {
 
     @Autowired
@@ -20,6 +22,8 @@ public class ArticleController {
 
     @GetMapping("/{name}")
     public String getArticle(@PathVariable("name") String name) {
+        log.debug("debug");
+        log.info("info");
         return userService.getAgeByName(name);
     }
 }

@@ -51,6 +51,11 @@
             <artifactId>zipkin-autoconfigure-storage-elasticsearch</artifactId>
             <version>${zipkin.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
