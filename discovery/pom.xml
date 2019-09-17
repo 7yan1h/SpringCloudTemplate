@@ -26,4 +26,34 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>prd1</id>
+            <properties>
+                <env>prd1</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>prd2</id>
+            <properties>
+                <env>prd2</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>prd3</id>
+            <properties>
+                <env>prd3</env>
+            </properties>
+        </profile>
+    </profiles>
 </project>

@@ -2,4 +2,4 @@ spring:
   profiles:
     active: @env@
   application:
-    name: user-service
+    name: hystrix-dashboard

@@ -5,6 +5,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://peer1:1001/eureka,http://peer3:1003/eureka
+      defaultZone: http://peer1:1001/eur0eka,http://peer3:1003/eureka
+
 server:
-  port: 1002
+  port: 1200

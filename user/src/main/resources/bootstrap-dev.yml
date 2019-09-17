@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      profile: @env@
+      uri: http://localhost:9000
+server:
+  port: 2000

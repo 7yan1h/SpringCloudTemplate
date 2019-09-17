@@ -8,4 +8,4 @@ eureka:
     service-url:
       defaultZone: http://peer2:1002/eureka,http://peer3:1003/eureka
 server:
-  port: 1001
+  port: 1100

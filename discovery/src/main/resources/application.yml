@@ -1,13 +1,5 @@
 spring:
+  profiles:
+    active: @env@
   application:
     name: discovery
-eureka:
-  server:
-    wait-time-in-ms-when-sync-empty: 5
-  instance:
-    hostname: localhost
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-server:
-  port: 1000

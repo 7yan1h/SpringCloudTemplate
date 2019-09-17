@@ -1,0 +1,11 @@
+eureka:
+  server:
+    wait-time-in-ms-when-sync-empty: 5
+    enable-self-preservation: false
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+server:
+  port: 1000

@@ -8,7 +8,7 @@ import top.ryan1h.springcloud.template.article.service.UserService;
  * @date 2019/7/15 0:44
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceFallback implements UserService {
 
     // 实现降级处理方法
     @Override
