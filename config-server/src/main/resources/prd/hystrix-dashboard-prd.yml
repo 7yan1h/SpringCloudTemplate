@@ -1,7 +1,3 @@
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:1000/eureka
 turbine:
   # 被监控的微服务,用,分隔
   app-config: article-service

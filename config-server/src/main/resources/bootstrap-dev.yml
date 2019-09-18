@@ -4,5 +4,13 @@ spring:
       server:
         native:
           search-locations: classpath:/dev
+  security:
+    user:
+      name: hx
+      password: hx
 server:
   port: 9000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka

@@ -2,6 +2,15 @@ spring:
   cloud:
     config:
       profile: @env@
-      uri: http://localhost:9000
+      uri: http://configserver
+      username: hx
+      password: hx
+      discovery:
+        enabled: true
+        service-id: config-server
 server:
   port: 8000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka

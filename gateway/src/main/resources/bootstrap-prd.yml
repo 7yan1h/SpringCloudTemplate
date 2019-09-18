@@ -3,5 +3,14 @@ spring:
     config:
       profile: @env@
       uri: http://localhost:9000
+      username: hx
+      password: hx
+      discovery:
+        enabled: true
+        service-id: config-server
 server:
   port: 8100
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka

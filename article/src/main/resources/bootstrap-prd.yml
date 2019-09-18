@@ -2,6 +2,15 @@ spring:
   cloud:
     config:
       profile: @env@
-      uri: http://localhost:9000
+      username: hx
+      password: hx
+      discovery:
+        enabled: true
+        service-id: config-server
 server:
   port: 3100
+# 注意这下面的eureka配置必须放在这里，而不能放在配置中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
