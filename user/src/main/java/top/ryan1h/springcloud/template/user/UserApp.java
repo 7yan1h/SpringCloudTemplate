@@ -1,17 +1,17 @@
-package top.ryan1h.springcloud.template.discovery;
+package top.ryan1h.springcloud.template.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author 59941
  * @date 2019/7/10 17:29
  */
-@EnableEurekaServer
+@EnableDiscoveryClient
 @SpringBootApplication
-public class DiscoveryApplication {
+public class UserApp {
     public static void main(String[] args) {
-        SpringApplication.run(DiscoveryApplication.class, args);
+        SpringApplication.run(UserApp.class, args);
     }
 }

@@ -7,10 +7,11 @@
         <module>discovery</module>
         <module>user</module>
         <module>article</module>
-        <module>gateway</module>
         <module>hystrix-dashboard</module>
         <module>config-server</module>
         <module>test</module>
+        <module>zipkin</module>
+        <module>zuul</module>
     </modules>
 
     <parent>
@@ -35,7 +36,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <dependencyManagement>

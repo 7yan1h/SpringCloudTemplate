@@ -9,22 +9,47 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gateway</artifactId>
+    <artifactId>zipkin</artifactId>
+
+    <properties>
+        <!--        2.12.4-2.12.9都不能用,或者不能改端口号-->
+        <zipkin.version>2.12.3</zipkin.version>
+    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-server</artifactId>
+            <version>${zipkin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-autoconfigure-ui</artifactId>
+            <version>${zipkin.version}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-autoconfigure-collector-rabbitmq</artifactId>
+            <version>${zipkin.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-autoconfigure-storage-elasticsearch</artifactId>
+            <version>${zipkin.version}</version>
         </dependency>
     </dependencies>
 

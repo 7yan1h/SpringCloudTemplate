@@ -4,3 +4,15 @@ zuul:
     # 代表用path替换article-service
     article-service:
       path: /article/**
+spring:
+  sleuth:
+    sampler:
+      probability: 1
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+  zipkin:
+    sender:
+      type: rabbit

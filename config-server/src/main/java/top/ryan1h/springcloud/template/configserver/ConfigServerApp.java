@@ -1,17 +1,20 @@
-package top.ryan1h.springcloud.template.user;
+package top.ryan1h.springcloud.template.configserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
  * @author 59941
- * @date 2019/7/10 17:29
+ * @date 2019/7/31 13:43
  */
+@EnableConfigServer
 @EnableDiscoveryClient
 @SpringBootApplication
-public class UserApplication {
+public class ConfigServerApp {
+
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class, args);
+        SpringApplication.run(ConfigServerApp.class, args);
     }
 }

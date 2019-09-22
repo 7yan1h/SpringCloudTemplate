@@ -1,0 +1,24 @@
+server:
+  port: 7100
+logging:
+  level:
+    root: info
+    top.ryan1h.springcloud.template: info
+  file: ${user.dir}/log/${spring.application.name}/logger.log
+management:
+  metrics:
+    web:
+      server:
+        # 这个配置可以防止访问其他url时报异常
+        auto-time-requests: false
+zipkin:
+  collector:
+    rabbitmq:
+      addresses: localhost:5672
+      username: guest
+      password: guest
+      queue: zipkin
+  storage:
+    type: elasticsearch
+    elasticsearch:
+      hosts: 127.0.0.1:9200

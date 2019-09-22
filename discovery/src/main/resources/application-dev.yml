@@ -9,3 +9,8 @@ eureka:
     fetch-registry: false
 server:
   port: 1000
+logging:
+  level:
+    root: info
+    top.ryan1h.springcloud.template: debug
+  file: ${user.dir}/log/${spring.application.name}/logger.log

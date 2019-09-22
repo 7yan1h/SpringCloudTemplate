@@ -2,7 +2,6 @@ spring:
   cloud:
     config:
       profile: @env@
-      uri: http://localhost:9000
       username: hx
       password: hx
       discovery:
@@ -14,3 +13,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:1000/eureka
+logging:
+  level:
+    root: info
+    top.ryan1h.springcloud.template: info
+  file: ${user.dir}/log/${spring.application.name}/logger.log

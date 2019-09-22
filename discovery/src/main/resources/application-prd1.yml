@@ -9,3 +9,8 @@ eureka:
       defaultZone: http://peer2:1002/eureka,http://peer3:1003/eureka
 server:
   port: 1100
+logging:
+  level:
+    root: info
+    top.ryan1h.springcloud.template: info
+  file: ${user.dir}/log/${spring.application.name}/logger.log
