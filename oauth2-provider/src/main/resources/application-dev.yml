@@ -1,0 +1,92 @@
+server:
+  port: 2000
+logging:
+  level:
+    root: info
+    top.ryan1h.springcloud.template: debug
+spring:
+  session:
+    store-type: redis
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    #url: jdbc:mysql://localhost:3306/test?useUnicode=true&&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT&&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT&&allowPublicKeyRetrieval=true
+    username: root
+    password: Hx1254188!
+    druid:
+      # druid文档：https://github.com/alibaba/druid/wiki
+      # 初始化时建立物理连接的个数
+      initialSize: 3
+      # 连接池最大连接数
+      maxActive: 20
+      # 连接池最小连接数
+      minIdle: 5
+      # 获取连接时最大等待时间，单位毫秒
+      maxWait: 60000
+      # 是否缓存preparedStatement,也就是PSCache,PSCache对支持游标的数据库性能提升巨大,比如说oracle.在mysql下建议关闭
+      poolPreparedStatements: false
+      # 要启用PSCache，必须配置大于0
+      max-pool-prepared-statement-per-connection-size: 20
+      # 用来检测连接是否有效的sql 必须是一个查询语句
+      validationQuery: select 'x'
+      # 申请连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
+      testOnBorrow: true
+      # 归还连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
+      testOnReturn: true
+      # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      testWhileIdle: true
+      # 有两个含义：
+      #1) Destroy线程会检测连接的间隔时间，如果连接空闲时间大于等于minEvictableIdleTimeMillis则关闭物理连接。
+      #2) testWhileIdle的判断依据，详细看testWhileIdle属性的说明
+      timeBetweenEvictionRunsMillis: 60000
+      # 一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+      # 一个连接在池中最大生存的时间，单位是毫秒
+      max-evictable-idle-time-millis: 600000
+      # 监控统计用的filter:stat;日志用的filter:slf4j;防御sql注入的filter:wall
+      filters: stat
+      # 合并多个DruidDataSource的监控数据
+      use-global-data-source-stat: true
+      # url jdbc监控
+      web-stat-filter:
+        enabled: true
+        # 统计哪些url
+        url-pattern: /*
+        # 不需要统计的url
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+        # 配置profileEnable能够监控单个url调用的sql列表
+        profile-enable: 'true'
+      # 用于统计的servlet配置
+      stat-view-servlet:
+        enabled: true
+        # 配置Druid访问路径
+        url-pattern: /druid/*
+        # 是否允许清空统计数据,在StatViewSerlvet输出的html页面中，有一个功能是Reset All，执行这个操作之后，会导致所有计数器清零，重新计数。
+        reset-enable: false
+        # 需要账号密码才能访问控制台
+        login-username: druid
+        login-password: druid
+        # IP白名单,可以使用掩码,如:128.242.127.1/24
+        allow: 127.0.0.1
+        #　IP黑名单,且优先级大于allow(也就是allow中也存在deny中的IP时,该IP被禁止),可以使用掩码,如:128.242.127.1/24
+        #deny: 192.168.1.218
+      # 配置插件
+      filter:
+        # 统计插件
+        stat:
+          log-slow-sql: true
+          db-type: mysql
+          enabled: true
+          # 配置慢sql标准,执行时间超过slow-sql-millis的就是慢sql
+          slow-sql-millis: 5000
+          # 配置sql合并统计功能,也就是将
+          # select * from t where id = 1
+          # select * from t where id = 2
+          # 合并为select * from t where id = ?进行统计
+          merge-sql: true
+mybatis-plus:
+  mapper-locations: classpath*:mappers/*.xml
+  configuration:
+    aggressive-lazy-loading: false

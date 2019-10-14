@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.ryan1h.springcloud.template.oauth2.provider.dao.RoleDao">
+
+    <select id="selectRoleByUsername" resultType="top.ryan1h.springcloud.template.oauth2.provider.domain.RoleBean">
+        select
+            role.*
+        from
+            user right join user_role on user.id = user_role.user_id
+            right join role on user_role.role_id = role.id
+        where
+            user.username = #{username}
+    </select>
+</mapper>
