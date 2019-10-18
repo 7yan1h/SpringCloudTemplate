@@ -12,9 +12,8 @@
         <module>test</module>
         <module>zipkin</module>
         <module>zuul</module>
-        <module>resource-server</module>
         <module>oauth2-provider</module>
-        <module>common</module>
+        <module>oauth2-client1</module>
     </modules>
 
     <parent>
@@ -34,19 +33,11 @@
         <mybatis-plus.version>3.2.0</mybatis-plus.version>
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
         <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
+        <spring-oauth2-boot>2.1.9.RELEASE</spring-oauth2-boot>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -92,6 +83,13 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>swagger-bootstrap-ui</artifactId>
                 <version>${swagger-bootstrap-ui.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+                <!--虽然版本和springboot相同，但并不受springboot管理，因此要指定version-->
+                <version>${spring-oauth2-boot}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

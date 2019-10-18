@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import top.ryan1h.springcloud.template.common.object.BaseBean;
+import top.ryan1h.sb.template.common.object.BaseBean;
 
 import java.io.Serializable;
 

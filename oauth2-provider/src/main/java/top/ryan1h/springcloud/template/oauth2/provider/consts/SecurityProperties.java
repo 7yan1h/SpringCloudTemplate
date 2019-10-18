@@ -2,7 +2,7 @@ package top.ryan1h.springcloud.template.oauth2.provider.consts;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import top.ryan1h.springcloud.template.common.util.crypto.rsa.RSAUtils;
+import top.ryan1h.sb.template.common.util.crypto.rsa.RSAUtils;
 
 import java.security.KeyPair;
 
@@ -13,7 +13,6 @@ import java.security.KeyPair;
 @Getter
 public class SecurityProperties {
 
-    public static final String LOGIN_URL = "/login";
     private KeyPair keyPair = new KeyPair(RSAUtils.publicKey(RSAProperties.BASE64_PUBLICK_KEY), RSAUtils.privateKey(RSAProperties.BASE64_PRIVATE_KEY));
 
     private class RSAProperties {

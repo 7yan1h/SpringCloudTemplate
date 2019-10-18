@@ -1,12 +1,11 @@
 package top.ryan1h.springcloud.template.oauth2.provider.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * 这个类就是普通的spring security配置，比如配置AuthenticationProvider，也可以配置登录
@@ -15,30 +14,19 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private static final Integer MAX_SESSION = 1;
+
     @Autowired
-    private AuthenticationProvider authenticationProvider;
-    @Autowired
-    private AuthenticationHandler authenticationHandler;
+    private UserDetailsService userDetailsService;
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(authenticationProvider);
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                .successHandler(authenticationHandler)
-                .failureHandler(authenticationHandler)
                 .permitAll()
-
-                .and()
-                .exceptionHandling()
-                // 异常处理器
-                .authenticationEntryPoint(authenticationHandler)
-
-                .and()
-                .logout().logoutSuccessHandler(authenticationHandler)
 
                 .and()
                 .authorizeRequests()
@@ -56,12 +44,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .maximumSessions(MAX_SESSION)
         ;
-
-    }
-
-    @Bean
-    AuthenticationHandler authenticationHandler() {
-        return new AuthenticationHandler();
     }
 }
 

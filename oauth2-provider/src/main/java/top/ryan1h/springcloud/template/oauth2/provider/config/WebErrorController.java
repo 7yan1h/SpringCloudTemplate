@@ -9,9 +9,9 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import top.ryan1h.springcloud.template.common.enums.MsgEnum;
-import top.ryan1h.springcloud.template.common.object.Result;
-import top.ryan1h.springcloud.template.common.util.web.request.ServletUtils;
+import top.ryan1h.sb.template.common.enums.MsgEnum;
+import top.ryan1h.sb.template.common.object.Result;
+import top.ryan1h.sb.template.common.util.web.request.ServletUtils;
 
 import javax.servlet.http.HttpServletRequest;
 

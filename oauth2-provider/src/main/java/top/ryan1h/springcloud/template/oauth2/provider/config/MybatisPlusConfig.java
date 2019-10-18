@@ -1,10 +1,12 @@
 package top.ryan1h.springcloud.template.oauth2.provider.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@MapperScan("top.ryan1h.springcloud.template.oauth2.provider.dao")
 public class MybatisPlusConfig {
 
     @Bean

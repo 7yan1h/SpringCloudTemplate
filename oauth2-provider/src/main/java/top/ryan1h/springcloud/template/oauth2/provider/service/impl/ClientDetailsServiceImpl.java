@@ -1,7 +1,6 @@
 package top.ryan1h.springcloud.template.oauth2.provider.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
@@ -10,8 +9,6 @@ import org.springframework.security.oauth2.provider.NoSuchClientException;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import top.ryan1h.springcloud.template.oauth2.provider.dao.Oauth2ClientDetailsDao;
 import top.ryan1h.springcloud.template.oauth2.provider.domain.Oauth2ClientDetailsBean;
-
-import java.util.Arrays;
 
 /**
  * 验证传入的客户端id是否在数据库存在，并加载客户端详情
@@ -47,13 +44,13 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
             clientDetails.setRefreshTokenValiditySeconds(oauth2ClientDetailsBean.getRefreshTokenValidity());
 
             // 自动授权,前端应在请求授权服务器授权之前，先确认用户是否同意该scope授权，同意则直接调用授权接口授权
-            String scopeString = oauth2ClientDetailsBean.getScope();
-            if (StringUtils.isNotEmpty(scopeString)) {
-                String[] scopes = scopeString.split(",");
-                if (scopes != null && scopes.length > 0) {
-                    clientDetails.setAutoApproveScopes(Arrays.asList(scopes));
-                }
-            }
+//            String scopeString = oauth2ClientDetailsBean.getScope();
+//            if (StringUtils.isNotEmpty(scopeString)) {
+//                String[] scopes = scopeString.split(",");
+//                if (scopes != null && scopes.length > 0) {
+//                    clientDetails.setAutoApproveScopes(Arrays.asList(scopes));
+//                }
+//            }
 
             return clientDetails;
         } else {

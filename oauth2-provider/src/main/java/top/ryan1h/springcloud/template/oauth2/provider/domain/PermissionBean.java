@@ -1,7 +1,7 @@
 package top.ryan1h.springcloud.template.oauth2.provider.domain;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import top.ryan1h.springcloud.template.common.object.BaseBean;
+import top.ryan1h.sb.template.common.object.BaseBean;
 
 /**
  * <p>

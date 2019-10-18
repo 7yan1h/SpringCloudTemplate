@@ -1,0 +1,24 @@
+# 自定义属性
+oauth2:
+  server:
+    path: http://localhost:2000/uac
+server:
+  port: 8080
+security:
+  oauth2:
+    client:
+      client-id: hx-client
+      client-secret: 123
+      user-authorization-uri: ${oauth2.server.path}/oauth/authorize
+      access-token-uri: ${oauth2.server.path}/oauth/token
+    resource:
+      jwt:
+        key-uri: ${oauth2.server.path}/oauth/token_key
+spring:
+  session:
+    store-type: redis
+    redis:
+      namespace: oauth2:client1
+  redis:
+    host: localhost
+    port: 6379

@@ -5,11 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
@@ -26,13 +26,11 @@ import java.util.Arrays;
  * 授权服务器配置
  */
 @Configuration
+@EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private SecurityProperties securityProperties;
-
-    @Autowired
-    private UserDetailsService userDetailsService;
 
     @Autowired
     private JWTTokenEnhancer jwtTokenEnhancer;
@@ -55,8 +53,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .accessTokenConverter(accessTokenConverter())
                 // 配置token转jwt，accessTokenConverter()也必须配置,虽然很扯
                 .tokenStore(tokenStore())
-                // 不配置，使用refresh_token时会报userDetailsService required
-                .userDetailsService(userDetailsService)
+//                // 不配置，使用refresh_token时会报userDetailsService required。已在WebSecurityConfig中配置
+//                .userDetailsService(userDetailsService)
                 // 给token添加自定义数据
                 .tokenEnhancer(tokenEnhancerChain);
     }

@@ -1,7 +1,6 @@
 package top.ryan1h.springcloud.template.oauth2.provider.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,8 +12,8 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 import org.springframework.session.Session;
 import org.springframework.session.SessionRepository;
 import org.springframework.util.CollectionUtils;
-import top.ryan1h.springcloud.template.common.object.LoginUser;
-import top.ryan1h.springcloud.template.common.security.Authority;
+import top.ryan1h.sb.template.common.consts.security.Authority;
+import top.ryan1h.sb.template.common.object.LoginUser;
 import top.ryan1h.springcloud.template.oauth2.provider.config.security.FormLoginAuthenticationToken;
 import top.ryan1h.springcloud.template.oauth2.provider.domain.PermissionBean;
 import top.ryan1h.springcloud.template.oauth2.provider.domain.RoleBean;
@@ -36,7 +35,6 @@ public class SecurityUtils {
     private IRoleService roleService;
 
     @Autowired
-    @Qualifier("userDetailsServiceImpl")
     private UserDetailsService userDetailsService;
 
     @Autowired
@@ -89,7 +87,6 @@ public class SecurityUtils {
 
         return null;
     }
-
 
     public List<GrantedAuthority> getUserAuthorities(String username) {
         List<PermissionBean> permissionBeanList = Optional.ofNullable(permissionService.getPermissionList(username))
