@@ -13,6 +13,28 @@ spring:
     password: guest
     host: localhost
     port: 5672
+  session:
+    store-type: redis
+    redis:
+      # 很重要，否则会导致session冲突，因此必须设置命名空间，相当于一个key
+      namespace: oauth2:${spring.application.name}
+  redis:
+    host: localhost
+    port: 6379
   zipkin:
     sender:
       type: rabbit
+# 自定义属性
+oauth2:
+  server:
+    path: http://localhost:5000/uac
+security:
+  oauth2:
+    client:
+      client-id: hx-client
+      client-secret: 123
+      user-authorization-uri: ${oauth2.server.path}/oauth/authorize
+      access-token-uri: ${oauth2.server.path}/oauth/token
+    resource:
+      jwt:
+        key-uri: ${oauth2.server.path}/oauth/token_key

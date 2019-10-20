@@ -1,7 +1,7 @@
 # 自定义属性
 oauth2:
   server:
-    path: http://localhost:2000/uac
+    path: http://localhost:5000/uac
 server:
   port: 8080
 security:

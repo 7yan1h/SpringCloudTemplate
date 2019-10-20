@@ -14,6 +14,7 @@
         <module>zuul</module>
         <module>oauth2-provider</module>
         <module>oauth2-client1</module>
+        <module>resource-server</module>
     </modules>
 
     <parent>

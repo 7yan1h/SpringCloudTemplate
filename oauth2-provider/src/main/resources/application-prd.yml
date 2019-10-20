@@ -1,5 +1,5 @@
 server:
-  port: 2100
+  port: 5100
   servlet:
     context-path: /uac
 logging:
